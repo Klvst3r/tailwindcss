@@ -1,0 +1,86 @@
+2. configurando Pryecto 
+
+
+
+
+
+Creamos nuestra BD
+	$ mysql -u klvst3r -p
+
+	En el RDBMS creamos nuestra BD
+	> 	CREATE DATABASE nombre_de_tu_bd 
+		CHARACTER SET utf8mb4 
+		COLLATE utf8mb4_general_ci;
+
+
+Ejemplo:
+
+	CREATE DATABASE tailwindcss
+	CHARACTER SET utf8mb4
+	COLLATE utf8mb4_general_ci;		
+
+Podemos verificar la creación:
+	> SHOW CREATE DATABASE sistema_almacen;
+
+Si deseamos que todas las nuevas bases de datos se creen con ese charset y collation por defecto, pudemos modificar el archivo de configuración:
+	# sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+
+
+Y agregar (o modificar) las líneas siguientes en [mysqld]:
+
+	[mysqld]
+	character-set-server = utf8mb4
+	collation-server = utf8mb4_general_ci
+
+
+Luego reiniciamos el servicio:
+	$ sudo systemctl restart mariadb
+
+
+Arrancamos en nuestro editor el proyecto y configuramos las variables de conexion con la bd destrinada
+	
+	En el archivo .env
+		DB_CONNECTION=mysql
+		DB_HOST=127.0.0.1
+		DB_PORT=3306
+		DB_DATABASE=tailwindcss
+		DB_USERNAME=klvst3r
+		DB_PASSWORD=desarrollo
+
+Se crea el model o y la migracion desde la terminal
+	$ php artisan migrate
+
+
+
+Vamos a la Bd y actualizamos para visualizar la información
+
+Vamos a instalar el paquete via composer
+	$ composer require ibex/crud-generator --dev
+
+Publicamos las configuraciones
+	$ php artisan vender:publish --tag=crud
+
+Se va a generar el crud rapidamente
+	$ php artisan make:crud products
+
+Como ya se tiene el modelo creado nos indica que ya existe sobreescribimos por que no cargamos nada a nuestro modelo.
+
+Con esto se han creado el modelo, las vistas, el layout
+
+Ahora podemos revisar las vistas:
+Exusten ya las plantillas Blade que se tienen 
+
+Revisamos las rutas:
+	/routes/web.php
+
+Llamamos a nuestro controlador
+	ProductController
+
+Se crea una ruta que desencadene el controlador
+	Route::resource('products', ProductController::class);
+
+El paquete ya realizo todos los metodos del crud que se puede adaptar o modificar.
+
+
+Para las vistas vamos a ocupar el paquete Laravel UI
+
