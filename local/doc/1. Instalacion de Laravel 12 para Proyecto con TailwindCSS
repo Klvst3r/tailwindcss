@@ -1,0 +1,38 @@
+1. Instalacion de Laravel 12 como un anueva instancia 
+
+
+1. Crear el proyecto con Composer. :
+
+	$ composer create-project laravel/laravel tailwindcss
+	
+	
+Si Instalamos Laravel de manera global
+    $ composer global config bin-dir --absolute
+
+Exportamos el Path - con Bash Shell
+  $ export PATH="$HOME/.composer/vendor/bin:$PATH"
+  $ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
+Reiniciamos el shell
+	$ source ~/.bashrc
+
+Probamos la verion del Instalador de Laravel
+	$ laravel --version
+
+Inicamos nuestro pporyecto
+	$ laravel new basicBlog
+
+Ingresamos a nuestro proyecto
+	$ cd basicBlog
+	
+A la fecha de Octubre de 2025 tenemos la version 12.9.1
+
+con Maria db
+
+
+
+3 Agregar a mi Repo Remoto
+
+git remote add origin git@github.com:Klvst3r/tailwindcss.git
+git branch -M main
+git push -u origin main
