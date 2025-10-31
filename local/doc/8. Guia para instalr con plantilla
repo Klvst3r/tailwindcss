@@ -1,0 +1,176 @@
+Guía completa, limpia y actualizada para que puedas usarla como plantilla base de instalación y configuración Laravel + Vite + TailwindCSS 3.x (estable).
+
+Incluye en qué carpeta o archivo va cada comando o configuración, cómo preparar el entorno de desarrollo y producción, y cómo generar el build final optimizado.
+
+GUÍA BASE — Laravel + Vite + TailwindCSS 3.x (configuración estable)
+🚀 1️⃣ Crear nuevo proyecto Laravel
+
+Desde tu terminal, ubícate en la carpeta donde guardas tus proyectos y ejecuta:
+
+    composer create-project laravel/laravel nombre_proyecto
+    cd nombre_proyecto
+
+2. Instalar dependencias necesarias
+
+Laravel ya viene con Vite configurado, solo instalaremos TailwindCSS 3.x estable y sus dependencias:
+    npm install -D tailwindcss@3 postcss autoprefixer
+
+
+3. Inicializar configuración de Tailwind
+Esto creará los archivos de configuración base de Tailwind y PostCSS:
+    npx tailwindcss init -p
+
+
+Esto genera:
+
+tailwind.config.js
+
+postcss.config.js
+
+4. Configurar Tailwind correctamente
+Abre tailwind.config.js (en la raíz del proyecto) y reemplaza su contenido con:
+
+    /** @type {import('tailwindcss').Config} */
+    export default {
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+    };
+
+
+Esto asegura que Tailwind analice correctamente todos tus archivos Blade, JS y Vue.
+
+5. Configurar PostCSS
+Abre postcss.config.js y verifica o reemplaza su contenido por:
+
+    export default {
+    plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+    },
+    };
+
+
+6. onfigurar Vite
+
+Abre vite.config.js (también en la raíz) y reemplaza todo su contenido por esta configuración optimizada para Laravel:
+
+    import { defineConfig } from 'vite';
+    import laravel from 'laravel-vite-plugin';
+
+    export default defineConfig({
+    plugins: [
+        laravel({
+        input: [
+            'resources/css/app.css',
+            'resources/js/app.js',
+        ],
+        refresh: true,
+        }),
+    ],
+    });
+
+
+7. Crear tu hoja de estilos base
+Abre o crea el archivo resources/css/app.css y agrega lo siguiente:
+
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+/* Puedes agregar aquí tus estilos personalizados */
+
+
+8. Importar tus assets en Laravel
+Abre el archivo resources/js/app.js y agrega esta línea si no existe:
+
+    import '../css/app.css';
+
+
+Esto asegura que tu CSS sea compilado correctamente.
+
+9. Integrar en tu plantilla Blade
+
+Abre resources/views/welcome.blade.php o la vista principal de tu app y agrega la directiva de Vite dentro del <head>:
+
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Laravel + TailwindCSS</title>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body class="bg-gray-100 text-gray-800">
+        <div class="flex items-center justify-center min-h-screen">
+            <h1 class="text-4xl font-bold text-blue-600">¡Laravel + TailwindCSS 3 funcionando!</h1>
+        </div>
+    </body>
+    </html>
+
+
+10. Ejecutar el servidor de desarrollo
+Ejecuta estos comandos en orden dentro de la raíz del proyecto:
+
+    npm install
+    npm run dev
+    php artisan serve
+
+Luego abre en el navegador:
+👉 http://127.0.0.1:8000
+
+
+Deberías ver la vista de Laravel con los estilos Tailwind funcionando perfectamente.
+
+11. Preparar build de producción
+Cuando termines el desarrollo, genera los archivos optimizados de producción con:
+
+    npm run build
+
+
+Esto generará los archivos minificados dentro de:
+    /public/build/assets/
+
+
+Laravel usará automáticamente estos archivos en modo producción (sin necesidad de ajustes extra).
+
+12. Estructura final esperada
+Después de la configuración, tu proyecto debe tener esta estructura base:
+
+    nombre_proyecto/
+    ├── package.json
+    ├── postcss.config.js
+    ├── tailwind.config.js
+    ├── vite.config.js
+    ├── resources/
+    │   ├── css/
+    │   │   └── app.css
+    │   ├── js/
+    │   │   └── app.js
+    │   └── views/
+    │       └── welcome.blade.php
+    └── public/
+        └── build/ (se genera tras npm run build)
+
+
+13. Verificación final
+
+Para confirmar que todo está correcto:
+En modo desarrollo (npm run dev), revisa en el navegador Network → CSS
+Debería cargar desde:
+
+    http://[::1]:5173/resources/css/app.css
+
+
+con código 200 (OK).
+2. En modo producción (npm run build), los estilos se cargan desde:
+
+    /build/assets/app.[hash].css
+

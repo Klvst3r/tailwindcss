@@ -1,0 +1,102 @@
+from reportlab.lib.pagesizes import LETTER
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+
+# Crear el documento PDF
+pdf_path = "/mnt/data/Guia_Laravel_Vite_TailwindCSS_3x.pdf"
+doc = SimpleDocTemplate(pdf_path, pagesize=LETTER)
+styles = getSampleStyleSheet()
+
+# Contenido de la guía (mismo texto que el MD generado antes)
+content = [
+    Paragraph("<b>Guía completa de instalación y configuración:</b> Laravel + Vite + TailwindCSS 3.x", styles['Title']),
+    Spacer(1, 12),
+    Paragraph("<b>1. Crear un nuevo proyecto Laravel</b>", styles['Heading2']),
+    Paragraph("composer create-project laravel/laravel nombre_proyecto", styles['Code']),
+    Paragraph("cd nombre_proyecto", styles['Code']),
+    Spacer(1, 12),
+
+    Paragraph("<b>2. Instalar dependencias necesarias</b>", styles['Heading2']),
+    Paragraph("npm install -D tailwindcss@3 postcss autoprefixer vite laravel-vite-plugin", styles['Code']),
+    Spacer(1, 12),
+
+    Paragraph("<b>3. Inicializar TailwindCSS</b>", styles['Heading2']),
+    Paragraph("npx tailwindcss init -p", styles['Code']),
+    Paragraph("Esto generará los archivos: tailwind.config.js y postcss.config.js", styles['Normal']),
+    Spacer(1, 12),
+
+    Paragraph("<b>4. Configurar TailwindCSS</b>", styles['Heading2']),
+    Paragraph("Editar tailwind.config.js:", styles['Normal']),
+    Paragraph("""
+    export default {
+      content: [
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
+      ],
+      theme: { extend: {} },
+      plugins: [],
+    }
+    """, styles['Code']),
+    Spacer(1, 12),
+
+    Paragraph("<b>5. Configurar PostCSS</b>", styles['Heading2']),
+    Paragraph("Editar postcss.config.js:", styles['Normal']),
+    Paragraph("""
+    export default {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    }
+    """, styles['Code']),
+    Spacer(1, 12),
+
+    Paragraph("<b>6. Configurar Vite</b>", styles['Heading2']),
+    Paragraph("Editar vite.config.js:", styles['Normal']),
+    Paragraph("""
+    import { defineConfig } from 'vite';
+    import laravel from 'laravel-vite-plugin';
+
+    export default defineConfig({
+      plugins: [
+        laravel({
+          input: ['resources/css/app.css', 'resources/js/app.js'],
+          refresh: true,
+        }),
+      ],
+    });
+    """, styles['Code']),
+    Spacer(1, 12),
+
+    Paragraph("<b>7. Configurar app.css</b>", styles['Heading2']),
+    Paragraph("Editar resources/css/app.css:", styles['Normal']),
+    Paragraph("""
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    """, styles['Code']),
+    Spacer(1, 12),
+
+    Paragraph("<b>8. Ejecutar el entorno de desarrollo</b>", styles['Heading2']),
+    Paragraph("npm run dev", styles['Code']),
+    Paragraph("Visita http://localhost:5173/ si es necesario.", styles['Normal']),
+    Spacer(1, 12),
+
+    Paragraph("<b>9. Compilar para producción</b>", styles['Heading2']),
+    Paragraph("npm run build", styles['Code']),
+    Paragraph("Los archivos compilados estarán en public/build/", styles['Normal']),
+    Spacer(1, 12),
+
+    Paragraph("<b>10. Verificar que TailwindCSS funciona</b>", styles['Heading2']),
+    Paragraph("Agrega una clase de prueba como <div class='text-red-500'>Funciona</div> en una vista.", styles['Normal']),
+    Spacer(1, 12),
+
+    Paragraph("<b>Resultado final</b>", styles['Heading2']),
+    Paragraph("✔ Laravel + Vite + TailwindCSS 3.x configurado correctamente, listo para desarrollo y build de producción.", styles['Normal']),
+]
+
+# Generar el PDF
+doc.build(content)
+
+pdf_path

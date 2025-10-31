@@ -20,10 +20,10 @@ Probamos la verion del Instalador de Laravel
 	$ laravel --version
 
 Inicamos nuestro pporyecto
-	$ laravel new basicBlog
+	$ laravel new tailwindcss
 
 Ingresamos a nuestro proyecto
-	$ cd basicBlog
+	$ cd tailwindcss
 	
 A la fecha de Octubre de 2025 tenemos la version 12.9.1
 
