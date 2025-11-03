@@ -58,7 +58,7 @@ Vamos a instalar el paquete via composer
 	$ composer require ibex/crud-generator --dev
 
 Publicamos las configuraciones
-	$ php artisan vender:publish --tag=crud
+	$ php artisan vendor:publish --tag=crud
 
 Se va a generar el crud rapidamente
 	$ php artisan make:crud products
