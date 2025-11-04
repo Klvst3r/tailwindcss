@@ -6,6 +6,9 @@
         "./resources/**/*.vue",
     ],
     theme: {
+        contFamily: {
+            'mont' : ['Monserrat']
+        },
         container:{
             center: true,
         },
