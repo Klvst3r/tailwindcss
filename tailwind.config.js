@@ -16,7 +16,11 @@
 
                 //Complex site-specific column configration
                 'footer' : '200px minmax(900px, 1fr) 100px',
-            }
+            },
+             fontFamily: {
+            sans: ['Roboto', 'ui-sans-serif', 'system-ui'],
+            serif: ['Lora', 'ui-serif', 'Georgia'],
+        },
         },
     },
     plugins: [],
