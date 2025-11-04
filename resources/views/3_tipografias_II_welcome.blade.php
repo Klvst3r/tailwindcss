@@ -14,15 +14,6 @@
             /* background-color: red; */
         }
     </style>
-    <style>
-        .imagen {
-            background-image: url("{{ asset('img/nTNR5b.jpeg') }}");
-            height: 400px;
-            width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
 </head>
 
 <body
@@ -31,10 +22,9 @@
     {{-- Verificamos funcionamiento de TailwindCSS --}}
     {{-- <h1 class="text-4xl font-bold text-blue-600">Tailwind está funcionando 🎉</h1> --}}
 
-    <div class="container">
-        <div
-            class="bg-gradient-to-r from-blue-500 via-green-600 to-yellow-400 text-center font-extrabold text-5xl bg-clip-text text-transparent">
-            Hola Mundo</div>
+    <div class="container mx-auto">
+
+        <h1 class="text-center text-3xl font-bo">Background</h1>
 
     </div>
 </body>
