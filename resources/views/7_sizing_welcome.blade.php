@@ -13,7 +13,12 @@
 </head>
 
 <body>
-    
+    <div class="container">
+        <div class="bg-green-600 h-32 w-screen custom-class">
+            <p class="text-white p-4">Este div tiene una clase personalizada aplicada.</p>
+
+        </div>
+    </div>
 </body>
 
 </html>
