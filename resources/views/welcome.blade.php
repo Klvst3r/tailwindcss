@@ -14,30 +14,31 @@
 
 <body>
     <div class="container">
+        <div class="bg-gray-400 p-4 h-64 overflow-y-scroll">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe accusantium laudantium esse. Molestiae
+                architecto qui possimus voluptatibus. Optio incidunt voluptas tenetur qui error. Fuga dolore sit at
+                porro dolorum recusandae?</p>
+            <p>Deleniti repellendus consequatur aut repudiandae tempora facilis nesciunt nobis debitis cupiditate soluta
+                voluptates rem minima ipsum, expedita consequuntur aliquid quibusdam numquam maxime illum excepturi
+                dolores. Reiciendis tenetur deserunt minus cupiditate.</p>
+            <p>Saepe consequatur repellendus repudiandae minus asperiores minima odio odit mollitia explicabo illo, ipsa
+                quod eum ad rem eos ullam possimus tempore, soluta deserunt itaque quisquam non eius? Ullam, molestias
+                recusandae.</p>
+            <p>Cupiditate repellat ipsam voluptates adipisci unde doloremque, deserunt consequatur officiis maiores
+                nostrum quis, iusto sed corrupti itaque totam, asperiores eum deleniti cum consequuntur enim? Neque cum
+                laborum asperiores debitis pariatur!</p>
+            <p>Doloremque ratione natus quod magnam explicabo eveniet minus repellat, minima doloribus similique tempora
+                libero esse non id soluta saepe. Ipsam nobis doloribus in aut cumque velit cum explicabo ad magni?</p>
+            <p>Odio dolorum eius sequi deserunt ad provident vero iste asperiores ratione sit omnis corrupti facere amet
+                delectus, cupiditate eos fugit! Tempora neque minus tenetur vitae beatae enim consequuntur. Sit,
+                aspernatur?</p>
+            <p>Quasi voluptatem, pariatur, commodi odio ratione modi atque fuga iusto unde repellat sit ut eligendi.
+                Cumque neque autem maiores libero, perspiciatis odio doloremque et deleniti! Sunt reprehenderit odit
+                quidem aspernatur!</p>
+        </div>
 
-        <img src="https://images.pexels.com/photos/34336341/pexels-photo-34336341.jpeg" alt="Night"
-            class="w-72 h-64 object-cover rounded-lg shadow-md float-left" />
-
-        <img src="https://images.pexels.com/photos/33430991/pexels-photo-33430991.jpeg" alt="Night"
-            class="w-72 h-64 object-cover rounded-lg shadow-md float-right" />
-
-        <p class="mb-2 clear-both">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur repellat cum,
-            qui
-            tempora odio incidunt vitae et illum quia nesciunt deserunt doloribus nemo eum aperiam eius atque ut.
-            Itaque, rerum.</p>
-        <p class="mb-2">Ut maiores eligendi saepe ipsa culpa nam, possimus vero incidunt quisquam sed illo minima,
-            explicabo, ad alias voluptatem ratione asperiores itaque quaerat nobis voluptatibus consectetur modi
-            officiis quibusdam voluptas? Modi.</p>
-        <p class="mb-2">Dignissimos quae consectetur excepturi quis adipisci veniam animi vitae eligendi libero
-            repellat similique quibusdam impedit ullam, praesentium magnam quos molestias omnis illum velit sint, in
-            eaque sunt expedita. Laborum, maxime.</p>
-        <p class="mb-2">Quasi excepturi saepe atque eum molestiae dolores repellat ipsa similique, facere commodi
-            dignissimos maxime? Exercitationem sunt autem nemo, impedit debitis unde ab laboriosam nisi praesentium
-            distinctio dignissimos accusantium quisquam earum.</p>
-        <p class="mb-2">Similique quasi illo inventore corrupti consectetur ab hic, quis, neque fugit repellendus
-            nesciunt voluptas velit, pariatur aliquid voluptatibus mollitia quas asperiores odio nihil eveniet eum
-            voluptatem porro necessitatibus! Facere, in!</p>
     </div>
+
 </body>
 
 </html>
