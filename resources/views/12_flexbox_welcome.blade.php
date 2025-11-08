@@ -13,9 +13,11 @@
 </head>
 
 <body>
-    <div class="container mt-4">
-        <div class="bg-gray-300 w-64 h-32 p-8">
-            <div class="bg-gray-500 h-full w-full"></div>
+    <div class="container ">
+        <div class="bg-gray-300 flex ">
+            <div class="bg-gray-400 text-gray-700 px-4 py-2 m-2 flex-1 lg:order-2">1</div>
+            <div class="bg-gray-400 text-gray-700 px-4 py-2 m-2 flex-1 lg:order-1">2</div>
+            <div class="bg-gray-400 text-gray-700 px-4 py-2 m-2 flex-1 order-3">3</div>
         </div>
     </div>
 </body>
