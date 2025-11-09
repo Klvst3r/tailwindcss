@@ -1,3 +1,5 @@
+@php $user = session('user'); @endphp
+
 <nav x-data="{ open: false, dropdown: false }" class="bg-gray-800 text-white relative">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
@@ -40,41 +42,51 @@
         </div>
       </div>
 
-      <!-- Perfil y notificaciones -->
+      <!-- Perfil o botón de login -->
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-        <!-- Notificaciones -->
-        <button type="button"
-          class="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
-          <span class="sr-only">Ver notificaciones</span>
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-            viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M15 17h5l-1.405-1.405M19 13V9a7 7 0 10-14 0v4l-1.405 1.595M5 17h5m-3 0v1a3 3 0 006 0v-1m-6 0h6" />
-          </svg>
-        </button>
-
-        <!-- Dropdown perfil -->
-        <div class="relative ml-3" x-data="{ dropdown: false }">
-          <button @click="dropdown = !dropdown" class="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-white">
-            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&w=256&h=256&q=80" alt="Usuario">
+        @if ($user)
+          <!-- Notificaciones -->
+          <button type="button"
+            class="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
+            <span class="sr-only">Ver notificaciones</span>
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 17h5l-1.405-1.405M19 13V9a7 7 0 10-14 0v4l-1.405 1.595M5 17h5m-3 0v1a3 3 0 006 0v-1m-6 0h6" />
+            </svg>
           </button>
 
-          <div x-show="dropdown" @click.away="dropdown = false"
-            x-transition
-            class="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-gray-700 py-1 shadow-lg ring-1 ring-black ring-opacity-5">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Perfil</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Configuración</a>
-            <form method="POST" action="{{ route('logout') }}"></form>
-            @csrf
-          
-              <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600" 
-                 onclick="event.preventDefault(); this.closest('form').submit();">
-                Salir
-              </a>
-            </form>
+          <!-- Dropdown perfil -->
+          <div class="relative ml-3" x-data="{ dropdown: false }">
+            <button @click="dropdown = !dropdown"
+              class="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-white">
+              <img class="h-8 w-8 rounded-full"
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&w=256&h=256&q=80"
+                alt="Usuario">
+            </button>
+
+            <div x-show="dropdown" @click.away="dropdown = false" x-transition
+              class="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-gray-700 py-1 shadow-lg ring-1 ring-black ring-opacity-5">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Perfil</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Configuración</a>
+
+              <form method="POST" action="{{ route('logout') }}" class="block">
+                @csrf
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); this.closest('form').submit();"
+                   class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">
+                   Salir
+                </a>
+              </form>
+            </div>
           </div>
-        </div>
+        @else
+          <!-- Botón iniciar sesión -->
+          <a href="{{ route('login') }}"
+             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+             Iniciar sesión
+          </a>
+        @endif
       </div>
     </div>
   </div>
@@ -86,6 +98,12 @@
       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
+
+      @if (!$user)
+        <a href="{{ route('login') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+          Iniciar sesión
+        </a>
+      @endif
     </div>
   </div>
 </nav>
