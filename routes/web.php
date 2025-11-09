@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 // Página principal
 Route::get('/', function () {
-    $user = session('user'); // Verificamos si hay usuario en sesión
+    $user = session('user');
     return view('welcome', compact('user'));
 })->name('home');
 
@@ -34,14 +34,13 @@ Route::get('/dashboard', function () {
 //     return redirect('/');
 // })->name('logout');
 
-// Simular login (mostrar formulario)
+// Mostrar formulario de login
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-// Procesar login (simular que el usuario se autentica)
+// Procesar login
 Route::post('/login', function (Request $request) {
-    // Aquí podrías validar usuario y contraseña
     session(['user' => [
         'name' => 'Usuario de Prueba',
         'email' => 'usuario@ejemplo.com',
