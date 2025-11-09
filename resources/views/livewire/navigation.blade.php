@@ -26,10 +26,10 @@
 
       <!-- Logo y menú -->
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex shrink-0 items-center">
+        <a href="/" class="flex shrink-0 items-center">
           <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Logo"
             class="h-8 w-auto" />
-        </div>
+        </a>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>

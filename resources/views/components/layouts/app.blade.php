@@ -21,9 +21,9 @@
     {{-- Barra de navegación Livewire --}}
     <livewire:navigation />
 
-    {{-- Contenido de la página --}}
+    {{-- Contenido principal dinamico de la página --}}
     <main class="container mx-auto py-8">
-        {{ $slot }}
+        @yield('content')
     </main>
 
     {{-- Livewire scripts --}}
